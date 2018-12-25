@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace IntakeApi
+namespace BankofNeverland.IntakeApi
 {
     public class Program
     {

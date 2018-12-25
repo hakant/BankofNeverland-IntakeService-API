@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace IntakeApi.Controllers
+namespace BankofNeverland.IntakeApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

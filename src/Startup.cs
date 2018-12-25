@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace IntakeApi
+namespace BankofNeverland.IntakeApi
 {
     public class Startup
     {
