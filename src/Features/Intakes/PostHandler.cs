@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BankofNeverland.IntakeApi.Configuration;
 using BankofNeverland.IntakeApi.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -25,7 +26,25 @@ namespace BankofNeverland.IntakeApi.Features.Intakes
             public int HorizonMonth { get; set; }
             public int HorizonYear { get; set; }
             public decimal GoalAmount { get; set; }
-            public string InvestmentProfile { get; set; }
+            public InvestmentProfile? InvestmentProfile { get; set; }
+        }
+
+        public class RequestValidator : AbstractValidator<Request>
+        {
+            public RequestValidator()
+            {
+                RuleFor(request => request.FirstName).NotNull().NotEmpty();
+                RuleFor(request => request.LastName).NotNull().NotEmpty();
+                RuleFor(request => request.BirthDate).NotNull().NotEmpty();
+                RuleFor(request => request.InitialDeposit).NotNull().GreaterThan(0);
+                RuleFor(request => request.HorizonMonth).NotNull().InclusiveBetween(1,12);
+                RuleFor(request => request.GoalAmount).NotNull();
+                RuleFor(request => request.InvestmentProfile).NotNull();
+
+                var startYear = DateTime.Now.Year;
+                var endYear = startYear + 60;
+                RuleFor(request => request.HorizonYear).NotNull().InclusiveBetween(startYear, endYear);
+            }
         }
 
         public class Handler : IRequestHandler<Request, Get.Response>

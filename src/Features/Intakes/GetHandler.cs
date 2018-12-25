@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BankofNeverland.IntakeApi.Configuration;
 using BankofNeverland.IntakeApi.Entities;
+using FluentValidation;
 using MediatR;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
@@ -16,9 +17,17 @@ namespace BankofNeverland.IntakeApi.Features.Intakes
 {
     public class Get
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public string Id { get; set; }
+        }
+
+        public class RequestValidator : AbstractValidator<Request>
+        {
+            public RequestValidator()
+            {
+                RuleFor(request => request.Id).NotNull().NotEmpty();
+            }
         }
 
         public class Response

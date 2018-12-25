@@ -16,6 +16,7 @@ using Microsoft.Extensions.Options;
 using BankofNeverland.IntakeApi.Configuration;
 using MediatR;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 
 namespace BankofNeverland.IntakeApi
 {
@@ -31,7 +32,14 @@ namespace BankofNeverland.IntakeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .AddFluentValidation(fv =>
+                {
+                    fv.ImplicitlyValidateChildProperties = true;
+                    fv.RegisterValidatorsFromAssemblyContaining<Startup>();
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.Configure<CosmosDbConfig>(Configuration.GetSection("CosmosDb"));
 
             var cosmosDbConfig = new CosmosDbConfig();
