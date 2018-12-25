@@ -1,0 +1,64 @@
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using AutoMapper;
+using BankofNeverland.IntakeApi.Configuration;
+using BankofNeverland.IntakeApi.Entities;
+using MediatR;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+
+namespace BankofNeverland.IntakeApi.Features.Intakes
+{
+    public class Post
+    {
+        public class Request : IRequest<Get.Response>
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public DateTime BirthDate { get; set; }
+            public decimal InitialDeposit { get; set; }
+            public int HorizonMonth { get; set; }
+            public int HorizonYear { get; set; }
+            public decimal GoalAmount { get; set; }
+            public string InvestmentProfile { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Request, Get.Response>
+        {
+            private readonly IDocumentClient _documentClient;
+            private readonly IMapper _mapper;
+            private readonly CosmosDbConfig _cosmosDbConfig;
+
+            public Handler(
+                IDocumentClient documentClient,
+                IOptions<CosmosDbConfig> cosmosDbConfig,
+                IMapper mapper
+                )
+            {
+                this._documentClient = documentClient;
+                this._cosmosDbConfig = cosmosDbConfig.Value;
+                this._mapper = mapper;
+            }
+
+            public async Task<Get.Response> Handle(Request request, CancellationToken cancellationToken)
+            {
+                var intakeEntity = _mapper.Map<IntakeEntity>(request);
+                intakeEntity.Id = Guid.NewGuid().ToString();
+
+                await _documentClient.CreateDocumentAsync(
+                    UriFactory.CreateDocumentCollectionUri(
+                        _cosmosDbConfig.DatabaseId,
+                        _cosmosDbConfig.Collections.IntakesCollection),
+                    intakeEntity
+                );
+
+                return _mapper.Map<Get.Response>(intakeEntity);
+            }
+        }
+    }
+}

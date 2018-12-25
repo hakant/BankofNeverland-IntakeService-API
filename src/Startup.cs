@@ -13,6 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using BankofNeverland.IntakeApi.Configuration;
+using MediatR;
+using AutoMapper;
+
 namespace BankofNeverland.IntakeApi
 {
     public class Startup
@@ -39,6 +43,9 @@ namespace BankofNeverland.IntakeApi
                     cosmosDbConfig.PrimaryKey
                     )
             );
+
+            services.AddAutoMapper(typeof(Startup));
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
