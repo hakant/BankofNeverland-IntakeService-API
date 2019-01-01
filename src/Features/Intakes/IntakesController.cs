@@ -44,7 +44,6 @@ namespace BankofNeverland.IntakeApi.Features.Intakes
             return Ok(intake);
         }
 
-        // POST api/values
         [HttpPost]
         public async Task<IActionResult> Post(Post.Request intake)
         {

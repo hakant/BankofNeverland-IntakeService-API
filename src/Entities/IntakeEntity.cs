@@ -20,7 +20,7 @@ namespace BankofNeverland.IntakeApi.Entities
     public enum InvestmentProfile
     {
         Defensive = 1,
-        Neutral,
+        Medium,
         Offensive
     }
 }
