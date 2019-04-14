@@ -23,7 +23,7 @@ namespace BankofNeverland.IntakeApi.Controllers
         [HttpGet]
         public IActionResult Get(string id)
         {
-            return Ok("I'm running");
+            return Ok(System.Diagnostics.Process.GetCurrentProcess().ProcessName);
         }
     }
 }
