@@ -21,7 +21,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'arm-templates'
-    TargetFolder: '$BUILD_ARTIFACTSTAGINGDIRECTORY/arm-templates'
+    TargetFolder: '$(BUILD_ARTIFACTSTAGINGDIRECTORY)/arm-templates'
     OverWrite: true
 
 - task: PublishBuildArtifacts@1
