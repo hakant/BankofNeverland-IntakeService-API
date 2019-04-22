@@ -18,4 +18,10 @@ steps:
     dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
   failOnStderr: true
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'arm-templates'
+    TargetFolder: '$BUILD_ARTIFACTSTAGINGDIRECTORY/arm-templates'
+    OverWrite: true
+
 - task: PublishBuildArtifacts@1
