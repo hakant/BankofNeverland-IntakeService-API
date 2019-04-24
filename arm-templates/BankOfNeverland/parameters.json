@@ -2,22 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "serverfarms_WestEurope_S1_name": {
-            "value": null
-        },
-        "sites_bon_intakeservicespa_name": {
-            "value": null
-        },
         "storageAccounts_bankofneverland_name": {
             "value": null
         },
-        "components_bon_intakeservicespa_name": {
-            "value": null
-        },
         "databaseAccounts_bankofneverland_name": {
-            "value": null
-        },
-        "alertrules_Failure_Anomalies___bon_intakeservicespa_name": {
             "value": null
         }
     }
