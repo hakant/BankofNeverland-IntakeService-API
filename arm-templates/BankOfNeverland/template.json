@@ -76,5 +76,11 @@
                 "accessTier": "Hot"
             }
         }
-    ]
+    ],
+    "outputs": {
+        "primaryKey" : {
+            "type": "string",
+            "value": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccounts_bankofneverland_name')), providers('Microsoft.DocumentDB','databaseAccounts').apiVersions[0]).primaryMasterKey]"
+        }
+    }
 }
