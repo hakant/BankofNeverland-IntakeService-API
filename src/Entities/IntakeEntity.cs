@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace BankofNeverland.IntakeApi.Entities
+namespace IntakeApi.Entities
 {
     public class IntakeEntity
     {

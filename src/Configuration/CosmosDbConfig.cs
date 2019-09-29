@@ -1,4 +1,4 @@
-namespace BankofNeverland.IntakeApi.Configuration
+namespace IntakeApi.Configuration
 {
     public class CosmosDbConfig
     {

@@ -3,17 +3,16 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using BankofNeverland.IntakeApi.Configuration;
-using BankofNeverland.IntakeApi.Entities;
 using FluentValidation;
+using IntakeApi.Configuration;
+using IntakeApi.Entities;
 using MediatR;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
 
-namespace BankofNeverland.IntakeApi.Features.Intakes
+namespace IntakeApi.Features.Intakes
 {
     public class Get
     {

@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using FluentValidation.AspNetCore;
+using IntakeApi.Configuration;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-using BankofNeverland.IntakeApi.Configuration;
-using MediatR;
-using AutoMapper;
-using FluentValidation.AspNetCore;
-
-namespace BankofNeverland.IntakeApi
+namespace IntakeApi
 {
     public class Startup
     {

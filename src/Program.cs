@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using BankofNeverland.IntakeApi.Configuration;
+﻿using System.Threading.Tasks;
+using IntakeApi.Configuration;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace BankofNeverland.IntakeApi
+namespace IntakeApi
 {
     public class Program
     {

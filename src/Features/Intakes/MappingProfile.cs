@@ -1,7 +1,7 @@
 using AutoMapper;
-using BankofNeverland.IntakeApi.Entities;
+using IntakeApi.Entities;
 
-namespace BankofNeverland.IntakeApi.Features.Intakes
+namespace IntakeApi.Features.Intakes
 {
     public class MappingProfile : Profile
     {
